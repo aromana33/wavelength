@@ -1,54 +1,31 @@
-export type TeamId = "A" | "B";
-
-/** UI / правила раунда по шагам */
+/**
+ * noTarget — старт: заслонка закрыта, сектора ещё нет.
+ * targetHidden — после «случайный сектор»: цель есть, поле закрыто.
+ * psychicOpen — психик открыл: белое поле и сектор видны.
+ * hiddenAfterPeek — снова закрыто, сектор скрыт.
+ * aimNeedle — стрелка на закрытом поле.
+ * resultOpen — открыто: сектор + стрелка + очки.
+ */
 export type Phase =
-  | "hidden"
-  | "preview"
-  | "guessing"
-  | "locked"
-  | "sideGuess"
-  | "reveal"
-  | "scoring"
-  | "nextRound";
-
-export type SideGuess = "left" | "right";
+  | "noTarget"
+  | "targetHidden"
+  | "psychicOpen"
+  | "hiddenAfterPeek"
+  | "aimNeedle"
+  | "resultOpen";
 
 export type GameState = {
   phase: Phase;
-  round: number;
-  /** После закрытия превью — можно переходить к фазе угадывания */
-  seenTargetThisRound: boolean;
-  /** Команда психика (она же ставит стрелку после подсказки) */
-  psychicTeam: TeamId;
+  /** Активен после первого «случайный сектор» */
   targetAngle: number;
   needleAngle: number;
-  /** После фиксации ответа */
-  lockedNeedleAngle: number | null;
-  spectrumLeft: string;
-  spectrumRight: string;
-  opponentSideGuess: SideGuess | null;
-  scores: Record<TeamId, number>;
-  /** Очки, начисленные в последнем завершённом подсчёте */
-  lastRound: {
-    mainTeam: TeamId;
-    mainPoints: number;
-    opponentTeam: TeamId;
-    opponentSideCorrect: boolean;
-    opponentPoints: number;
-  } | null;
+  /** Очки за последнее открытие результата */
+  lastScore: number | null;
 };
 
 export const INITIAL_STATE: GameState = {
-  phase: "hidden",
-  round: 1,
-  seenTargetThisRound: false,
-  psychicTeam: "A",
+  phase: "noTarget",
   targetAngle: 90,
   needleAngle: 90,
-  lockedNeedleAngle: null,
-  spectrumLeft: "",
-  spectrumRight: "",
-  opponentSideGuess: null,
-  scores: { A: 0, B: 0 },
-  lastRound: null,
+  lastScore: null,
 };
