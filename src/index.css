@@ -1,0 +1,188 @@
+:root {
+  color-scheme: light;
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+  line-height: 1.45;
+  color: #0f172a;
+  background: radial-gradient(
+    1200px 800px at 50% -10%,
+    #e8eefc,
+    #cfd8ea 45%,
+    #b9c4dc
+  );
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+  padding: 16px clamp(12px, 3vw, 28px) 32px;
+}
+
+.app-shell {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.app-title {
+  margin: 0 0 4px;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  letter-spacing: -0.02em;
+}
+
+.app-sub {
+  margin: 0 0 18px;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.panel + .panel {
+  margin-top: 12px;
+}
+
+.score-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.score-pill {
+  display: inline-flex;
+  gap: 8px;
+  align-items: baseline;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #0f172a;
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.phase-badge {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #475569;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+label.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: #334155;
+  flex: 1 1 160px;
+}
+
+input[type="text"],
+input[type="number"] {
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  padding: 8px 10px;
+  font: inherit;
+  background: #fff;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid #0f172a;
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 8px 12px;
+}
+
+button.secondary {
+  background: #fff;
+  color: #0f172a;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+button.ghost {
+  background: transparent;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
+.dial-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 4px;
+}
+
+.dial {
+  width: min(100%, 520px);
+  height: auto;
+  touch-action: none;
+  filter: drop-shadow(0 16px 28px rgba(15, 23, 42, 0.12));
+}
+
+.hint {
+  font-size: 0.88rem;
+  color: #475569;
+  margin: 0;
+}
+
+.spectrum-display {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 700;
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  padding: 8px 4px 2px;
+}
+
+.spectrum-display span {
+  max-width: 46%;
+}
+
+.spectrum-display .left {
+  text-align: left;
+  color: #0b5cab;
+}
+
+.spectrum-display .right {
+  text-align: right;
+  color: #b45309;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+}
